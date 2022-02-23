@@ -1,0 +1,847 @@
+@import "reset.scss";
+
+@font-face {
+   font-family: "PlumbCondensed";
+   src: local("PlumbCondensed"),
+   local("Plumb Condensed"),
+   url("../fonts/PlumbCondensed\ Regular.woff2") format("woff2"),
+   url("../fonts/PlumbCondensed\ Regular.woff") format("woff"),
+   url("../fonts/PlumbCondensed\ Regular.ttf") format("truetype");
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: "PlumbCondensed";
+   src: local("PlumbCondensed"),
+   local("Plumb Condensed"),
+   url("../fonts/PlumbCondensed\ Light.woff2") format("woff2"),
+   url("../fonts/PlumbCondensed\ Light.woff") format("woff"),
+   url("../fonts/PlumbCondensed\ Light.ttf") format("truetype");
+   font-weight: 300;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: "Trebuchet MS Regular";
+   src: local("Trebuchet MS Regular"),
+   url("../fonts/TrebuchetMS.woff") format("woff"),
+   url("../fonts/TrebuchetMS.eot") format("embedded-opentype"),
+   url("../fonts/TrebuchetMS.ttf") format("truetype");
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: "Trebuchet MS Regular";
+   src: local("Trebuchet MS Regular"),
+   url("../fonts/TrebuchetMS-Italic.woff") format("woff"),
+   url("../fonts/TrebuchetMS-Italic.eot") format("embedded-opentype"),
+   url("../fonts/TrebuchetMS-Italic.ttf") format("truetype");
+   font-weight: 400;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: "Trebuchet MS Regular";
+   src: local("Trebuchet MS Regular"),
+   url("../fonts/TrebuchetMS-Bold.woff") format("woff"),
+   url("../fonts/TrebuchetMS-Bold.eot") format("embedded-opentype"),
+   url("../fonts/TrebuchetMS-Bold.ttf") format("truetype");
+   font-weight: 700;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Bebas Neue';
+   src: local('Bebas Neue Light'), 
+   local('BebasNeue-Light'), 
+   url(../fonts/bebasneueregular.woff2) format('woff2'), 
+   url(../fonts/bebasneueregular.woff) format('woff'), 
+   url(../fonts/bebasneueregular.ttf) format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+$col1: #f5135c;
+$col2: #fff;
+$col3: #272727;
+$col4: #2d2d2d;
+
+@mixin adatpiveFont ($minW, $maxW, $minfz, $const) {
+   font-size: calc(#{$minfz} + #{$const} * ((100vw - #{$minW}px)/(#{$maxW} - #{$minW})));
+}
+
+.container {
+   width: 85%;
+   margin: 0 auto;
+}
+.header{
+   font-family: "PlumbCondensed", sans-serif;
+   &__info-menu {
+      background: rgba(21,21,21, .78);
+      line-height: 1.2rem;
+      font-weight: 400;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+      @include adatpiveFont(320, 1400, .94rem, 2);
+      padding: 0.5em;
+      display: flex;
+      column-gap: 3em;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+   }
+   &__info-menu-item {
+      padding: 0.4em;
+   }
+   &__logo-container {
+      padding: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      background-color: #5b749a;
+      background-image: linear-gradient(0.0deg, rgba(0,0,0,0.24) 0%, rgba(255,255,255,0.24) 100%);
+   }
+}
+.pink {
+   color: $col1;
+}
+.info-menu {
+   color: $col2;
+   text-transform: uppercase;
+   &__link-clickable {
+      padding: 0.5em 0;
+   }
+}
+.logo-text {
+   font-family: 'Trebuchet MS';
+   font-size: 2.75rem;
+   line-height: 1.43rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 0.025em;
+   color: #ffffff;
+}
+.intro-image {
+   width: 100%;
+   height: auto;
+}
+.intro-image-container {
+   @media(max-width: 575px) {
+      display: none;
+   }
+   &_s {
+      display: none;
+      @media(max-width: 575px) {
+         display: block;
+      }
+   }
+}
+/*INTRO */
+
+.intro {
+   font-family: 'Plumb Condensed';
+   position: relative;
+   &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      transition: all 1s ease;
+      position: relative;
+      z-index: 3;
+      @media (max-width: 1099px) {
+         display: none;
+         opacity: 0;
+         visibility: hidden;
+      }
+      &:hover {
+         @media(max-width: 1099px) {
+            display: flex;
+         flex-direction: column;
+         opacity: 1;
+         visibility: visible;
+         }
+      }
+   }
+   &__hidden-menu {
+      display: none;
+      padding: .8em;
+      text-align: center;
+      &:hover +.intro__container {
+         @media(max-width: 1099px) {
+            display: flex;
+         flex-direction: column;
+         opacity: 1;
+         visibility: visible;
+         }
+      }
+      @media (max-width: 1099px) {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   }
+   &__top-menu {
+      background: rgba(255, 255, 255, 0.78);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+   }
+   &__main-title {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(255, 255, 255, .23);
+      padding: 1em;
+      width: 100%;
+      margin-bottom: 1em;
+   }
+}
+.menu {
+   &__menu-item {
+      padding: .8em;
+      flex-grow: 1;
+      flex-shrink: 1;
+      text-align: center;
+      position: relative;
+      @media(max-width: 767px) {
+         padding: 0.4em;
+      }
+      & a {
+         padding: 0.8em;
+      }
+      &::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 1px;
+         height: 100%;
+         background: linear-gradient(to top, transparent 10%, #000 50%, #000 60%, transparent 90%);
+      }
+      &:last-of-type::after {
+         content: '';
+         position: absolute;
+         top: 0;
+         right: 0;
+         width: 1px;
+         height: 100%;
+         background: linear-gradient(to top, transparent 10%, #000 50%, #000 60%, transparent 90%);
+      }
+      @media (max-width: 1099px) {
+         &::before, &:last-of-type::after {
+            display: none;
+         }
+      }
+   }
+}
+.top-menu {
+   &__menu-item {
+      &_question {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 0;
+         &:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+         }
+      }
+   }
+   &__link {
+      padding: .8em;
+      color: #383838;
+      @include adatpiveFont(320, 1440, 1rem, 2);
+      line-height: 19px;
+      font-weight: 300;
+      text-transform: uppercase;
+      position: relative;
+      @media(max-width: 767px) {
+         padding: 0.4em;
+      }
+      &_active::after {
+         content: '';
+         position: absolute;
+         bottom: 20%;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 100%;
+         height: 2px;
+         background: $col1;
+      }
+   }
+}
+.submenu {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   z-index: 2;
+   top: 100%;
+   right: 0;
+   text-align: left;
+   background: #fff;
+   padding: 0.5em;
+   transition: all .3s linear;
+   &__item {
+      padding: 1em;
+      position: relative;
+      transition: all .3s ease;
+      &:hover {
+         text-shadow: 0 0 0.6px #383838;
+      }
+      &::after {
+         position: absolute;
+         top: 100%;
+         left: 0;
+         content: '';
+         width: 100%;
+         height: 2px;
+         background: linear-gradient(to right, #000, #9f9f9f);
+      }
+      &:last-child::after {
+         display: none;
+      }
+   }
+}
+.fa-caret-down {
+   color: #383838;
+   padding: 0.3em;
+   &:hover {
+      cursor: pointer;
+   }
+}
+.main-title {
+   @include adatpiveFont(320, 1440, 1.4rem, 7);
+   text-transform: uppercase;
+   font-family: 'Bebas Neue';
+   font-weight: 400;
+   letter-spacing: .04em;
+   color: $col2;
+   &__container {
+      margin: 0 auto;
+      text-align: right;
+   }
+}
+
+/*SNILS-INFO*/
+
+.snils-info {
+   &__page-suptitle{
+      padding: .4em;
+   }
+   &__container {
+      padding: 4em 0;
+   }
+   &__page-paragraph {
+      padding: 2em 0;
+      text-align: center;
+   }
+   &__page-subtitle {
+      text-align: center;
+      color: $col1;
+      margin-top: 2em;
+   }
+}
+.page-suptitle {
+   background: $col1;
+   color: $col2;
+   text-align: center;
+   font-family: "PlumbCondensed";
+   font-weight: 400;
+   line-height: 30px;
+   text-transform: uppercase;
+   text-shadow: 0px 1px 1px rgba(0,0,0,0.46);
+   @include adatpiveFont(320, 1400, 1.3rem, 8);
+}
+.page-paragraph, .snils-description{
+   font-family: 'Trebuchet MS';
+   line-height: 24px;
+   font-weight: 400;
+   color: #272727;
+   @include adatpiveFont(320, 1400, .875rem, 2);
+}
+.snils-description {
+   display: grid;
+   grid-template-columns: 4fr 7fr;
+   grid-column-gap: 3em;
+   @media(max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
+   }
+   &__item {
+      & img {
+         width: 100%;
+         height: auto;
+      }
+      &_bold {
+         font-weight: 700;
+      }
+   }
+}
+.goals {
+   &__item {
+      padding: 1em 0 0;
+      position: relative;
+      padding-left: 3em;
+      &::before {
+         content: '';
+         position: absolute;
+         top: 50%;
+         left: 0;
+         transform: translateY(-50%);
+         width: 29px;
+         height: 29px;
+         background: url('../image/tick_pink.png');
+      }
+   }
+}
+.page-subtitle {
+   font-family: 'Trebuchet MS';
+   @include adatpiveFont(320, 1440, .875rem, 4);
+   line-height: 24px;
+   font-weight: 400;
+   text-transform: uppercase;
+}
+
+/* MAKING SNILS*/
+.making-snils {
+   position: relative;
+   &__page-subtitle {
+      text-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+      color: $col2;
+      text-align: center;
+   }
+   &__container {
+      padding: 2em 1em 6em;
+      text-align: center;
+      @media(max-width: 575px) {
+         width: 90%;
+      }
+   }
+   &__title-wrapper {
+      display: inline-block;
+      margin: 2em;
+      position: relative;
+   }
+   &__transform-wrapper {
+      position: absolute;
+      width: 90%;
+      height: 180%;
+      top: 58%;
+      left: 50%;
+      transform: translate(-50%, -50%) perspective(400px) rotateX(-50deg);
+      background: #5e7599;
+   }
+   &__title {
+      font-family: 'Bebas Neue';
+      @include adatpiveFont(320, 1440, 1.125rem, 30);
+      line-height: 30px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.46);
+      color: #ffffff;
+      position: relative;
+      padding: .5em 1.5em;
+      z-index: 5;
+      &::before {
+         content: '';
+         position: absolute;
+         top: 7%;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 110%;
+         height: 2px;
+         background: #fff;
+      }
+      &::after {
+         content: '';
+         position: absolute;
+         bottom: 7%;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 90%;
+         height: 2px;
+         background: #fff;
+      }
+   }
+}
+.making-snils-info {
+   position: relative;
+   z-index: 3;
+}
+.making-snils-background {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 2;
+   opacity: .9;
+   background:  url(../image/bg-unit.png) 50% 50%/cover no-repeat, linear-gradient(to top, rgba(255, 255, 255, .9), rgba(255, 255, 255, .9));
+}
+.making-snils-double-bg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 1;
+   opacity: .9;
+   background: url(../image/making-main-background.png) 0 0/cover no-repeat;
+}
+.options {
+   display: flex;
+   justify-content: space-between;
+   @media(max-width: 799px) {
+      flex-direction: column;
+      gap: 4em;
+   }
+   &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+   &__opt-title {
+      padding: 1em;
+   }
+}
+.options-item {
+   &__text {
+         font-family: 'Trebuchet MS';
+         @include adatpiveFont(320, 1440, 0.93rem, 2);
+         line-height: 27px;
+         font-weight: 400;
+         color: #fff;
+         text-align: center;
+         width: 70%;
+         @media(max-width: 991px) {
+            width: 80%;
+         }
+         @media(max-width: 767px) {
+            width: 80%;
+         }
+   }
+}
+.opt-title {
+   font-family: 'Bebas Neue';
+   @include adatpiveFont(320, 1440, 1.6rem, 4);
+   line-height: 36px;
+   font-weight: 400;
+   text-transform: uppercase;
+   color: #ffffff;
+}
+
+/*banner*/
+.banner {
+   background: linear-gradient(to top, rgba(86, 110, 148, .3), #566e94), linear-gradient(to right, rgba(86, 110, 148, .2), #566e94), url(../image/banner-left.png) left no-repeat, url(../image/banner_center.png) center no-repeat, url(../image/banner-right.png) right no-repeat;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   @media(max-width: 1099px) {
+      gap: 2em;
+   }
+   @media(max-width: 1099px) {
+      flex-direction: column;
+      align-items: center;
+   }
+   &__form {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, .34);
+      border: 1px solid rgba(0, 0, 0, 0.45);
+      outline: none;
+      padding: 1em 0;
+   }
+   &__form-title {
+      padding: 1em 0;
+      text-align: center;
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      &::after {
+         content: '';
+         position: absolute;
+         bottom: .5em;
+         left: 0;
+         width: 100%;
+         height: 2px;
+         background: rgba(0,0,0,0.14);
+      }
+   }
+   &__form-button {
+      margin: .3em 0;
+   }
+}
+.banner-img {
+   display: inline-block;
+   position: absolute;
+   top: 50%;
+   left: 7%;
+   transform: translateY(-50%);
+   z-index: 4;
+   padding: .4em;
+   background: $col2;
+   border-radius: 50%;
+   text-align: center;
+   & img {
+      width: 100%;
+   }
+   @media(max-width: 1099px) {
+      display: none;
+   }
+}
+.banner-text {
+   font-family: 'Bebas Neue';
+   @include adatpiveFont(320, 1400, 1.63rem, 4);
+   line-height: 36px;
+   font-weight: 400;
+   text-shadow: 0px 1px 1px rgba(0,0,0,0.34);
+   color: #ffffff;
+   display: flex;
+   gap: 1em;
+   align-items: center;
+   padding: 3.2em 0;
+   @media(max-width: 1099px) {
+      padding: 1em 0;
+   }
+}
+.form-wrapper {
+   background: rgba(255, 255, 255, .27);
+   border: 1px solid rgba(0,0,0,0.4);
+   padding: 0.4em;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: 7%;
+   z-index: 4;
+   @media(max-width: 1099px) {
+      position: static;
+      transform: translateY(0);
+   }
+}
+.form {
+   &__input {
+      outline: none;
+      background: $col2;
+      border: none;
+      padding: 0.5em;
+      margin: 0.5em 1em;
+      resize: none;
+      &:focus {
+         box-shadow: 0 0 3px #000;
+      }
+      &::placeholder {
+         font-family: 'Trebuchet MS';
+         font-size: 14px;
+         line-height: 1.2;
+         font-weight: 400;
+         font-style: italic;
+         color: #969494;
+      }
+   }
+}
+.form-title {
+   font-family: 'Trebuchet MS';
+   @include adatpiveFont(320, 1440, 1rem, 2);
+   line-height: 23px;
+   font-weight: 700;
+   text-transform: uppercase;
+   color: #56575b;
+}
+.form-button {
+   outline: none;
+   border: none;
+   background-color: #63799c;
+   cursor: pointer;
+   background-image: linear-gradient(0.0deg, rgba(0,0,0,0.24) 0%, rgba(255,255,255,0.24) 100%);
+   box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3), inset 0px 2px 0px 0px rgba(255,255,255,0.49);
+   border-radius: 3px;
+   color: $col2;
+   padding: 0.7em 1em;
+   min-width: 160px;
+   max-width: 174px;
+   margin: .5em auto;
+}
+
+/*special*/
+.special {
+   &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2em 0;
+   }
+   &__container {
+      padding: 3em 0;
+   }
+   &__page-paragraph {
+      line-height: 27px;
+      color: #2d2d2d;
+      font-weight: 400;
+      @include adatpiveFont(320, 1440, 1rem, 1);
+      text-align: center;
+   }
+}
+
+/*contacts*/
+.contacts {
+   background: linear-gradient(0.0deg, rgba(0,0,0,0.24) 0%, rgba(255,255,255,0.24) 100%), linear-gradient(to top, rgba(80, 102, 142, 0.85), rgba(80, 102, 142, 0.85)), url('../image/mood_people.png') 0 0/cover no-repeat;
+   &__menu {
+      display: flex;
+      position: relative;
+      flex-wrap: wrap;
+      &::after {
+         content: '';
+         position: absolute;
+         bottom: -.5em;
+         left: 50%;
+         transform: translateX(-50%);
+         background: rgba(85, 120, 165, .6);
+         width: 107%;
+         height: 3px;
+      }
+   }
+   &__menu-item {
+      font-family: 'Trebuchet MS';
+      font-size: 1rem;
+      line-height: 19px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.34);
+      color: #ffffff;
+      @media(max-width: 991px) {
+         width: 30%;
+      }
+      @media(max-width: 686px) {
+         width: 50%;
+      }
+      @media(max-width: 686px) {
+         width:100%;
+      }
+      &::before {
+         background: linear-gradient(to top, transparent 10%, #fff 50%, #fff 60%, transparent 90%);
+      }
+      &:last-of-type::after {
+         background: linear-gradient(to top, transparent 10%, #fff 50%, #fff 60%, transparent 90%);
+      }
+   }
+   &__contact-button {
+      padding: .5em;
+      margin: 2em 0 0;
+   }
+   &__logo-container {
+      padding: 2em 0;
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      align-items: center;
+   }
+}
+.contact-info {
+   display: flex;
+   justify-content: space-between;
+   @media(max-width: 930px) {
+      flex-direction: column;
+      align-items: center;
+   }
+   &__title {
+      font-family: 'Trebuchet MS';
+      font-size: 0.875rem;
+      line-height: 18px;
+      font-weight: 400;
+      color: #ffffff;
+      margin: 1em 0;
+   }
+}
+.contact-form {
+   display: flex;
+   flex-direction: column;
+   &__input {
+      background: #fff;
+      padding: 0.3em 1em;
+      border: none;
+      font-family: 'Plumb Condensed';
+      font-size: 1rem;
+      line-height: 1.2;
+      font-weight: 300;
+      color: #050505;
+      resize: none;
+      &:focus {
+         box-shadow: 1px 1px 3px #000;
+      }
+      outline: none;
+   }
+}
+.form-container {
+   padding: 2em 0;
+}
+.inputs-row {
+   display: flex;
+   align-items: stretch;
+   gap: 1em;
+   @media(max-width: 575px) {
+      flex-direction: column;
+   }
+}
+.form-inputs {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   @media(max-width: 575px) {
+      gap: 1em;
+   }
+}
+.contact-button {
+   min-width: 140px;
+   max-width: 155px;
+   background-color: #ec2b6a;
+   border-radius: 4px;
+   border: none;
+   font-family: 'Trebuchet MS';
+   font-size: .875rem;
+   line-height: 24px;
+   font-weight: 400;
+   text-transform: uppercase;
+   color: #ffffff;
+   cursor: pointer;
+}
+.phone-link {
+   font-family: 'Plumb Condensed';
+   @include adatpiveFont(320, 1440, 1.625rem, 4);
+   line-height: 40px;
+   font-weight: 400;
+   text-transform: uppercase;
+   text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+   color: #fffefe;
+   &_big {
+      @include adatpiveFont(320, 1440, 2rem, 4);
+   }
+}
+
+.footer {
+   &__info-menu {
+      display: flex;
+      gap: 2em;
+      justify-content: center;
+      padding: 1.5em 0 3em;
+      @media(max-width: 767px) {
+         flex-direction: column;
+         align-items: center;
+      }
+   }
+   &__info-menu-item {
+      font-family: 'Bebas Neue';
+      @include adatpiveFont(320, 1440, 1.125rem, 3);
+      line-height: 19px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+      color: #ffffff;
+   }
+}
